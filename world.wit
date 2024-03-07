@@ -1,0 +1,28 @@
+/// This package contains the types required to build components that handle integer overflow arithmetic.
+package arithmetic:overflow;
+
+/// An interface that represents various overflow arithmetic operations.
+interface overflowing-add {
+    /// Represents the arguments to overflowing-add.
+    record arguments {
+        x: s32,
+        y: s32,
+    }
+
+    /// Returns a tuple including the result of addition and a boolean indicating whether overflow
+    /// artithmetic overflow would have occurred. If overflow would have occurred then the wrapped
+    /// value is returned.
+    overflowing-add: func(args: arguments) -> tuple<s32, bool>;
+}
+
+/// Components targeting this world export an intstance that preforms overflow arithmetic.
+world library {
+    /// Exports an instance of the overflowing-add interface.
+    export overflowing-add;
+}
+
+/// Components targeting this world import an instance of the arithmetic interface.
+world imports {
+    /// Import an instance of the overflowing-add interface.
+    import overflowing-add;
+}

@@ -1,0 +1,15 @@
+spin_manifest_version = 2
+
+[application]
+name = "example"
+version = "0.1.0"
+description = ""
+
+[[trigger.http]]
+route = "/..."
+component = "example"
+
+[component.example]
+source = "service.wasm"
+[component.example.build]
+command =  "./build.sh"
